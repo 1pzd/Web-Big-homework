@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>分类管理 · 智问管理后台</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+
+<div id="sidebarMount"></div>
+
+<div class="admin-main">
+    <header id="topbarMount"></header>
+
+    <div class="content">
+        <div class="panel">
+            <div class="panel-head">
+                <h2>知识分类</h2>
+                <div class="right">
+                    <button class="btn btn-primary btn-sm" id="addBtn">+ 新增分类</button>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table class="data">
+                    <thead>
+                    <tr>
+                        <th style="width:64px;">ID</th>
+                        <th>分类名称</th>
+                        <th style="width:90px;">排序</th>
+                        <th style="width:120px;">条目数</th>
+                        <th>描述</th>
+                        <th style="width:150px;">更新时间</th>
+                        <th style="width:150px;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-mask" id="modal">
+    <div class="modal">
+        <div class="modal-head">
+            <h3 id="modalTitle">新增分类</h3>
+            <button class="x" id="modalClose">×</button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="formId">
+            <div class="form-row">
+                <div class="form-item">
+                    <label for="formName">分类名称</label>
+                    <input class="input" id="formName" placeholder="例如：账号与登录">
+                </div>
+                <div class="form-item">
+                    <label for="formSort">排序值（越小越靠前）</label>
+                    <input class="input" type="number" id="formSort" value="0">
+                </div>
+            </div>
+            <div class="form-item">
+                <label for="formDesc">分类描述</label>
+                <input class="input" id="formDesc" placeholder="简要说明该分类涵盖的内容">
+            </div>
+        </div>
+        <div class="modal-foot">
+            <button class="btn btn-ghost" id="cancelBtn">取消</button>
+            <button class="btn btn-primary" id="saveBtn">保存</button>
+        </div>
+    </div>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/admin/admin-common.js"></script>
+<script src="/js/admin/category.js"></script>
+</body>
+</html>

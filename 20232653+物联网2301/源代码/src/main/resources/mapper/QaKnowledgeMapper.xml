@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iot.qa.mapper.QaKnowledgeMapper">
+
+    <!-- 分页查询知识条目，左连接分类表带出分类名称 -->
+    <select id="selectPageWithCategory" resultType="com.iot.qa.entity.QaKnowledge">
+        SELECT k.id,
+               k.category_id,
+               k.question,
+               k.answer,
+               k.keywords,
+               k.hit_count,
+               k.status,
+               k.create_time,
+               k.update_time,
+               c.name AS category_name
+        FROM qa_knowledge k
+                 LEFT JOIN qa_category c ON c.id = k.category_id AND c.deleted = 0
+        WHERE k.deleted = 0
+        <if test="categoryId != null">
+            AND k.category_id = #{categoryId}
+        </if>
+        <if test="status != null">
+            AND k.status = #{status}
+        </if>
+        <if test="keyword != null and keyword != ''">
+            AND (k.question LIKE CONCAT('%', #{keyword}, '%')
+            OR k.keywords LIKE CONCAT('%', #{keyword}, '%')
+            OR k.answer LIKE CONCAT('%', #{keyword}, '%'))
+        </if>
+        ORDER BY k.update_time DESC, k.id DESC
+    </select>
+
+</mapper>

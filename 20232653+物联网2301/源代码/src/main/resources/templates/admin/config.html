@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>系统配置 · 智问管理后台</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+
+<div id="sidebarMount"></div>
+
+<div class="admin-main">
+    <header id="topbarMount"></header>
+
+    <div class="content">
+        <div class="panel">
+            <div class="panel-head">
+                <h2>问答引擎配置</h2>
+                <div class="right">
+                    <span style="font-size:13px;color:#8a90a8;">修改后立即生效，无需重启服务</span>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="alert alert-error" id="errBox" style="display:none;"></div>
+
+                <div class="form-row">
+                    <div class="form-item">
+                        <label for="mode">问答模式</label>
+                        <select class="input" id="mode">
+                            <option value="local">local — 本地知识库检索</option>
+                            <option value="llm">llm — 大模型生成</option>
+                        </select>
+                        <div class="form-tip">选择 llm 时必须填写 API Key，否则会自动降级为本地检索</div>
+                    </div>
+                    <div class="form-item">
+                        <label for="threshold">命中阈值</label>
+                        <input class="input" id="threshold" placeholder="0.25">
+                        <div class="form-tip">取值范围 0~1，值越高判定越严格</div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-item">
+                        <label for="model">大模型名称</label>
+                        <input class="input" id="model" placeholder="gpt-4o-mini">
+                    </div>
+                    <div class="form-item">
+                        <label for="apiKey">大模型 API Key</label>
+                        <input class="input" id="apiKey" placeholder="留空表示不使用大模型">
+                    </div>
+                </div>
+
+                <div class="form-item">
+                    <label for="baseUrl">大模型接口地址</label>
+                    <input class="input" id="baseUrl" placeholder="https://api.openai.com/v1">
+                    <div class="form-tip">需为 OpenAI 兼容接口，系统会请求 {baseUrl}/chat/completions</div>
+                </div>
+
+                <div style="display:flex;gap:10px;margin-top:8px;">
+                    <button class="btn btn-primary" id="saveBtn">保存配置</button>
+                    <button class="btn btn-ghost" id="reloadBtn">重新载入</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-head"><h2>站点信息</h2></div>
+            <div class="panel-body">
+                <div class="form-row">
+                    <div class="form-item">
+                        <label for="siteName">站点名称</label>
+                        <input class="input" id="siteName">
+                    </div>
+                    <div class="form-item">
+                        <label for="siteNotice">首页公告</label>
+                        <input class="input" id="siteNotice">
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="saveSiteBtn">保存站点信息</button>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-head"><h2>全部参数（数据库原始记录）</h2></div>
+            <div class="table-wrap">
+                <table class="data">
+                    <thead>
+                    <tr>
+                        <th style="width:220px;">参数键</th>
+                        <th>参数值</th>
+                        <th style="width:280px;">说明</th>
+                        <th style="width:160px;">更新时间</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/admin/admin-common.js"></script>
+<script src="/js/admin/config.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>智问 · AI 智能问答平台</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="nav">
+    <a class="nav-brand" href="/">
+        <span class="nav-logo">智</span>
+        <span id="siteName">智问 · AI 智能问答平台</span>
+    </a>
+    <nav class="nav-links">
+        <a href="/" class="active">首页</a>
+        <a href="/chat">智能问答</a>
+        <a href="/history">问答历史</a>
+    </nav>
+    <div class="nav-right" id="navRight">
+        <a class="btn btn-ghost btn-sm" href="/login">登录</a>
+        <a class="btn btn-primary btn-sm" href="/register">免费注册</a>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-inner">
+        <span class="hero-badge">知识库检索 + 大模型双引擎</span>
+        <h1>有问题，就<em>问智问</em></h1>
+        <p id="siteNotice">
+            基于知识库相似度检索的智能问答平台，无需等待，输入问题即刻获得标准解答；
+            管理员还可一键切换到大模型模式，让回答更灵活。
+        </p>
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="/chat">立即开始提问 →</a>
+            <a class="btn btn-ghost" href="/register">创建账号</a>
+        </div>
+
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <b id="statKnowledge">--</b>
+                <span>知识库条目</span>
+            </div>
+            <div class="hero-stat">
+                <b id="statUser">--</b>
+                <span>注册用户</span>
+            </div>
+            <div class="hero-stat">
+                <b id="statHit">--</b>
+                <span>知识库命中率</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-title">
+        <h2>平台能做什么</h2>
+        <p>从前台问答到后台管理，一条完整的前后端数据交互链路</p>
+    </div>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon">⌕</div>
+            <h3>知识库精准检索</h3>
+            <p>把问题与标准问题、关键词做加权相似度打分，命中即返回可追溯的标准答案，完全离线可用。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">◇</div>
+            <h3>可切换大模型</h3>
+            <p>后台一键切换问答模式，支持任意 OpenAI 兼容接口；调用失败自动降级回本地检索。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">◷</div>
+            <h3>会话与历史管理</h3>
+            <p>每轮对话自动归档为会话，支持回看、删除与清空，问答记录可随时追溯。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">◧</div>
+            <h3>数据看板</h3>
+            <p>提问趋势、热门问题、答案来源占比、用户活跃时段等指标一屏呈现，辅助知识库运营。</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-title">
+        <h2>大家在问</h2>
+        <p>点击任意问题，登录后即可查看标准答案</p>
+    </div>
+    <div class="chip-list" id="hotQuestions">
+        <span class="chip">加载中…</span>
+    </div>
+</section>
+
+<footer style="text-align:center;padding:26px;color:#8a90a8;font-size:13px;border-top:1px solid #e6e9f5;">
+    智问 · AI 智能问答平台 &nbsp;|&nbsp; 学号 20232653 &nbsp;物联网 2301 &nbsp;|&nbsp; Java Web 课程设计作品
+</footer>
+
+<script src="/js/common.js"></script>
+<script src="/js/index.js"></script>
+</body>
+</html>

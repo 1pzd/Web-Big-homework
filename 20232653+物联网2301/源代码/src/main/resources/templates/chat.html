@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>智能问答 · 智问</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="nav">
+    <a class="nav-brand" href="/">
+        <span class="nav-logo">智</span>
+        <span>智问 · AI 智能问答平台</span>
+    </a>
+    <nav class="nav-links">
+        <a href="/">首页</a>
+        <a href="/chat" class="active">智能问答</a>
+        <a href="/history">问答历史</a>
+    </nav>
+    <div class="nav-right">
+        <a class="nav-user" href="/history" id="userBox">
+            <span class="avatar" id="userAvatar">·</span>
+            <span id="userName">加载中</span>
+        </a>
+        <button class="btn btn-ghost btn-sm" data-logout>退出</button>
+    </div>
+</header>
+
+<div class="chat-layout">
+
+    <aside class="chat-side">
+        <div class="chat-side-head">
+            <button class="btn btn-primary btn-block btn-sm" id="newSessionBtn">+ 开启新对话</button>
+        </div>
+        <div class="session-list" id="sessionList"></div>
+    </aside>
+
+    <main class="chat-main">
+        <div class="chat-head">
+            <div>
+                <h2 id="chatTitle">新的对话</h2>
+                <div class="sub" id="chatSub">输入问题，系统会在知识库中检索最匹配的答案</div>
+            </div>
+        </div>
+
+        <div class="chat-body" id="chatBody"></div>
+
+        <div class="chat-foot">
+            <div class="guess-row" id="guessRow"></div>
+            <div class="ask-box">
+                <textarea id="askInput" rows="1" placeholder="请输入你的问题，例如：图书馆开放时间是什么时候？（Enter 发送，Shift + Enter 换行）"></textarea>
+                <button class="btn btn-primary" id="sendBtn">发送</button>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/chat.js"></script>
+</body>
+</html>

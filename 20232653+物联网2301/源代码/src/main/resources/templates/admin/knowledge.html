@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>知识库管理 · 智问管理后台</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+
+<div id="sidebarMount"></div>
+
+<div class="admin-main">
+    <header id="topbarMount"></header>
+
+    <div class="content">
+        <div class="panel">
+            <div class="panel-head">
+                <h2>知识库条目</h2>
+                <div class="right">
+                    <div class="toolbar">
+                        <input class="input grow" id="keyword" placeholder="搜索问题、关键词或答案">
+                        <select class="input" id="categoryFilter"></select>
+                        <select class="input" id="statusFilter">
+                            <option value="">全部状态</option>
+                            <option value="1">已启用</option>
+                            <option value="0">已停用</option>
+                        </select>
+                        <button class="btn btn-ghost btn-sm" id="searchBtn">查询</button>
+                        <button class="btn btn-primary btn-sm" id="addBtn">+ 新增条目</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table class="data">
+                    <thead>
+                    <tr>
+                        <th style="width:64px;">ID</th>
+                        <th>标准问题</th>
+                        <th style="width:120px;">分类</th>
+                        <th style="width:200px;">关键词</th>
+                        <th style="width:80px;">命中</th>
+                        <th style="width:88px;">状态</th>
+                        <th style="width:150px;">更新时间</th>
+                        <th style="width:180px;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="pager" id="pager"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-mask" id="modal">
+    <div class="modal">
+        <div class="modal-head">
+            <h3 id="modalTitle">新增知识条目</h3>
+            <button class="x" id="modalClose">×</button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="formId">
+            <div class="form-row">
+                <div class="form-item">
+                    <label for="formCategory">所属分类</label>
+                    <select class="input" id="formCategory"></select>
+                </div>
+                <div class="form-item">
+                    <label for="formStatus">状态</label>
+                    <select class="input" id="formStatus">
+                        <option value="1">启用</option>
+                        <option value="0">停用</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-item">
+                <label for="formQuestion">标准问题</label>
+                <input class="input" id="formQuestion" placeholder="例如：如何注册账号？">
+            </div>
+            <div class="form-item">
+                <label for="formKeywords">关键词（英文逗号分隔，用于提升检索命中率）</label>
+                <input class="input" id="formKeywords" placeholder="注册,账号,新用户">
+            </div>
+            <div class="form-item">
+                <label for="formAnswer">标准答案</label>
+                <textarea class="input" id="formAnswer" placeholder="请输入标准答案"></textarea>
+            </div>
+        </div>
+        <div class="modal-foot">
+            <button class="btn btn-ghost" id="cancelBtn">取消</button>
+            <button class="btn btn-primary" id="saveBtn">保存</button>
+        </div>
+    </div>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/admin/admin-common.js"></script>
+<script src="/js/admin/knowledge.js"></script>
+</body>
+</html>
